@@ -1,6 +1,6 @@
 # 🚀 Kanban Dashboard
 
-![Preview](preview/dashboard.png)
+![Preview](Kanban-Dashboard/preview/dashboard.png)
 
 A modern and responsive Kanban Dashboard built with **HTML, CSS, and Vanilla JavaScript**.
 
@@ -24,22 +24,6 @@ The application helps users organize their workflow using a Kanban board while p
 - 🎯 Task Status Management
 - 📌 Kanban Board Layout
 - 🖱️ Drag & Drop Support
-
----
-
-## 📷 Preview
-
-### Dashboard
-
-```
-preview/dashboard.png
-```
-
-### Tasks
-
-```
-/preview/tasks.png
-```
 
 ---
 
