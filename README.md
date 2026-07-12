@@ -27,21 +27,6 @@ The application helps users organize their workflow using a Kanban board while p
 
 ---
 
-## 📷 Preview
-
-### Dashboard
-
-```
-preview/dashboard.png
-```
-
-### Tasks
-
-```
-/preview/tasks.png
-```
-
----
 
 ## 🛠️ Built With
 
