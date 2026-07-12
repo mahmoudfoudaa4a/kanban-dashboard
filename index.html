@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Dashboard</title>
+    <!---------CSS Link--------->
+    <link rel="stylesheet" href="css/style.css" />
+    <!---------Icons Link--------->
+    <link rel="stylesheet" href="css/fontello.css" />
+    <!---------Font Link--------->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <i class="icon-th-list aside-show"></i>
+      <!----------Home Page--------->
+      <section class="home-page">
+        <div class="not-signed-in">
+          <h2>Hello Buddy! 💜</h2>
+          <p>Sign in to unlock your dashboard and manage your tasks.</p>
+          <button class="sign-in">Sign In</button>
+        </div>
+
+        <div class="signed-in hidden">
+          <h2 id="welcoming"></h2>
+          <p>There is Your Dashboard Analytics</p>
+          <div class="analytics">
+            <div class="data">
+              <h4 class="total">Total: 0</h4>
+              <h4 class="pending">In Progress: 0</h4>
+              <h4 class="reviewed">Reviewed: 0</h4>
+              <h4 class="completed">Completed: 0</h4>
+            </div>
+            <span class="arrow"
+              ><img src="imgs/curly-arrow.png" alt="curly-arrow"
+            /></span>
+
+            <div>
+              <canvas id="chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!----------Tasks Page--------->
+      <section class="tasks-page hidden">
+        <header>
+          <h1>Kanban Dashboard <i class="icon-cog-1 rotating-anim"></i></h1>
+          <div class="cont">
+            <div class="search-contaiener">
+              <label for="search"><i class="icon-search"></i></label>
+              <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Search"
+              />
+            </div>
+            <i class="icon-plus" id="add-item" title="add task"></i>
+          </div>
+          <nav>
+            <div class="options">
+              <span class="all-work option activated" data-status="all-works"
+                >All Works</span
+              >
+              <span class="pending-work option" data-status="in-prog"
+                >Pending Work</span
+              >
+              <span class="reviewed-work option" data-status="reviewed"
+                >Reviewed Work</span
+              >
+              <span class="completed-work option" data-status="completed"
+                >Completed Work</span
+              >
+            </div>
+            <div class="sort-container">
+              <span class="sort">Sort By</span>
+              <select name="sort-item" id="sort-item">
+                <option value="a-z">A-Z</option>
+                <option value="newest">Newset</option>
+              </select>
+            </div>
+          </nav>
+        </header>
+        <div class="cols">
+          <div class="col one" data-status="in-prog">
+            <div class="container">
+              <div class="cont">
+                <span class="count">0</span>
+                <span>In Progress</span>
+              </div>
+              <i class="icon-plus"></i>
+            </div>
+            <div class="works" data-status="in-prog"></div>
+          </div>
+
+          <div class="col two" data-status="reviewed">
+            <div class="container">
+              <div class="cont">
+                <span class="count">0</span>
+                <span>Reviewed</span>
+              </div>
+              <i class="icon-plus"></i>
+            </div>
+            <div class="works" data-status="reviewed"></div>
+          </div>
+
+          <div class="col three" data-status="completed">
+            <div class="container">
+              <div class="cont">
+                <span class="count">0</span>
+                <span>Completed</span>
+              </div>
+              <i class="icon-plus"></i>
+            </div>
+            <div class="works" data-status="completed"></div>
+          </div>
+        </div>
+      </section>
+
+      <!----------Side Bar-------->
+      <aside class="side-bar">
+        <header>
+          <h2><span>K</span> Kanban</h2>
+        </header>
+        <div class="pages-options">
+          <div class="options">
+            <span class="home-pg option active-opt" data-page="home-page"
+              ><i class="icon-home"></i> Home</span
+            >
+            <span class="tasks-pg option" data-page="tasks-page"
+              ><i class="icon-th-list"></i> Tasks</span
+            >
+            <span class="settings-pg option" data-page="settings-page"
+              ><i class="icon-cog-alt"></i> Settings</span
+            >
+            <span class="call-center-pg option" data-page="call-center-page"
+              ><i class="icon-chat"></i> Call Center</span
+            >
+          </div>
+        </div>
+        <footer class="aside-foot">
+          <button class="sign-in">Sign in</button>
+          <div class="user-acc hidden">
+            <img src="" alt="user-photo" class="avatar" />
+
+            <div class="container">
+              <h4 id="user-name"></h4>
+              <span>Premium Member</span>
+            </div>
+
+            <button class="sign-out" id="log-out">
+              <i class="icon-logout"></i>
+            </button>
+          </div>
+        </footer>
+      </aside>
+      <!----------Settings Page--------->
+      <section class="settings-page hidden">
+        <div class="settings-container">
+          <h2>Choose Your Settings</h2>
+          <form action="" id="user-info">
+            <div class="containeer">
+              <input
+                type="text"
+                name="user-name-inp"
+                id="user-name-inp"
+                placeholder="Enter Your Name"
+              />
+            </div>
+            <div class="custom-select-container">
+              <div class="choose-section">
+                <h3>Choose Avatar</h3>
+                <i id="icon-down-open" class="icon-down-open"></i>
+              </div>
+
+              <div class="choosen-avatar"></div>
+
+              <ul id="select-options" class="select-options hidden">
+                <li
+                  class="option-item"
+                  data-value="user1"
+                  data-img="imgs/girl2.jpg"
+                >
+                  <img src="imgs/girl2.jpg" alt="user1" class="avatar" />
+                </li>
+                <li
+                  class="option-item"
+                  data-value="user2"
+                  data-img="imgs/man1.jpg"
+                >
+                  <img src="imgs/man1.jpg" alt="user2" class="avatar" />
+                </li>
+                <li
+                  class="option-item"
+                  data-value="user3"
+                  data-img="imgs/man2.jpg"
+                >
+                  <img src="imgs/man2.jpg" alt="user3" class="avatar" />
+                </li>
+              </ul>
+            </div>
+            <button id="save-info">Save</button>
+          </form>
+
+          <div class="dark-mode">
+            Dark Mode
+            <span class="slide-opt"><span class="big-circle"></span></span>
+          </div>
+          <button id="reset-data">Delete Memory</button>
+        </div>
+      </section>
+
+      <!----------Call Center Page--------->
+      <section class="call-center-page hidden">
+        <div class="call-center-container">
+          <h2>Contact With Us</h2>
+          <form>
+            <div class="container">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                required
+              />
+            </div>
+            <div class="container">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="container">
+              <label for="subject">Talking About ?</label>
+              <textarea name="message" id="subject" required></textarea>
+            </div>
+
+            <button id="submit-info">Submit</button>
+            <h4 id="status-of-response"></h4>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!---------Modal------------>
+    <div class="task-modal hidden">
+      <div class="container">
+        <h3></h3>
+        <select type="text" name="task-status" id="task-status">
+          <option value="in-prog">In Progress</option>
+          <option value="reviewed">Reviewed</option>
+          <option value="completed">Completed</option>
+        </select>
+        <input
+          type="text"
+          name="task-title"
+          id="task-title"
+          placeholder="Title"
+        />
+        <textarea
+          name="task-description"
+          id="task-description"
+          placeholder="Description"
+        ></textarea>
+        <button class="add-btn">Add</button>
+        <button class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+    <!---------Toast------------>
+    <div class="toasts-div"></div>
+
+    <!---------Confirm Dialog------------>
+    <div class="confirm hidden">
+      <div class="confirm-message">
+        <h1>Are Youe Sure You Want to</h1>
+        <img src="imgs/exclamation-mark.png" alt="exclamation-mark" />
+        <div class="btns">
+          <button class="add-btn">Yes</button>
+          <button class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!----------EmailJS Link------------>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <!----------Chart Link------------>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!----------Js file Link------------>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
