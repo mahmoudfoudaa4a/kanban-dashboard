@@ -18,9 +18,11 @@ function initSidebar() {
 
     document.addEventListener("click", () => {
       if (window.innerWidth > 992) return;
-      aside.classList.remove("show-sidebar");
+     if (aside.classList.contains("show-sidebar"))
+
+{ aside.classList.remove("show-sidebar");
       aside.classList.add("hide-sidebar");
-    });
+    });}
 
     pageOptions.forEach((option) => {
       option.addEventListener("click", () => {
